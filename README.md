@@ -1,2 +1,2 @@
 # ic-test-examples
-Examples for the ic-test tool
+A collection of examples featuring the [ic-test](https://github.com/wasm-forge/ic-test) tool
