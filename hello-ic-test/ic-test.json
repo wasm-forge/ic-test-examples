@@ -1,0 +1,19 @@
+{
+  "test_folder": "tests",
+  "icp_setup": {
+    "dfx_json": "dfx.json",
+    "skip_dfx_json": false,
+    "canisters": {
+      "hello-ic-test-backend": {
+        "name": "hello-ic-test-backend",
+        "var_name": "hello_ic_test_backend",
+        "service_name": "HelloIcTestBackendCanister",
+        "candid_path": ".dfx/local/canisters/hello-ic-test-backend/constructor.did",
+        "init_arg": "(50, 73)",
+        "generate_bindings": true,
+        "wasm": ".dfx/local/canisters/hello-ic-test-backend/hello-ic-test-backend.wasm",
+        "specified_id": null
+      }
+    }
+  }
+}

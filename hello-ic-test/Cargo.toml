@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "src/hello-ic-test-backend"
+, "tests"]
+resolver = "2"

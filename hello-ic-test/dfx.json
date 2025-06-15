@@ -1,0 +1,18 @@
+{
+  "canisters": {
+    "hello-ic-test-backend": {
+      "candid": "src/hello-ic-test-backend/hello-ic-test-backend.did",
+      "package": "hello-ic-test-backend",
+      "type": "rust",
+      "init_arg": "(50, 73)"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
