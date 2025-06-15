@@ -1,0 +1,18 @@
+{
+  "test_folder": "tests",
+  "icp_setup": {
+    "dfx_json": "dfx.json",
+    "skip_dfx_json": false,
+    "canisters": {
+      "ic-rusqlite-backend": {
+        "name": "ic-rusqlite-backend",
+        "var_name": "ic_rusqlite_backend",
+        "service_name": "IcRusqliteBackendCanister",
+        "candid_path": ".dfx/local/canisters/ic-rusqlite-backend/constructor.did",
+        "generate_bindings": true,
+        "wasm": ".dfx/local/canisters/ic-rusqlite-backend/ic-rusqlite-backend.wasm.gz",
+        "specified_id": null
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "canisters": {
+    "ic-rusqlite-backend": {
+      "candid": "src/ic-rusqlite-backend/ic-rusqlite-backend.did",
+      "package": "ic-rusqlite-backend",
+      "build": "./scripts/build.sh",
+      "wasm": "target/wasm32-wasip1/release/no_wasi.wasm.gz",
+      "type": "custom"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
