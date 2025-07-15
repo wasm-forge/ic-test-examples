@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "src/eth-balance-backend"
+]
+resolver = "2"

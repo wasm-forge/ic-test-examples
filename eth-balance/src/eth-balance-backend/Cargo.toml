@@ -1,0 +1,18 @@
+[package]
+name = "eth-balance-backend"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+alloy-primitives = "1.2.1"
+candid = "0.10"
+evm-rpc-canister-types = "5.0.1"
+ic-cdk = "0.17"
+ic-cdk-timers = "0.11" # Feel free to remove this dependency if you don't need timers
+serde = "1.0.219"
+serde_json = "1.0.140"
