@@ -1,5 +1,4 @@
 [workspace]
 members = [
-    "src/eth-balance-backend"
-]
+    "src/eth-balance-backend"]
 resolver = "2"
