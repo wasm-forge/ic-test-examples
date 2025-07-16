@@ -9,6 +9,10 @@ A basic test example generated from dfx.
 
 A slightly more complex example of a canister testing SQL statements.
 
+## eth-balance
+
+An example of a canister requesting ETH balance.
+
 # External examples
 
 ## Co-processor example

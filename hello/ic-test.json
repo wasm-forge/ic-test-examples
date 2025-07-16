@@ -1,0 +1,18 @@
+{
+  "test_folder": "tests",
+  "icp_setup": {
+    "dfx_json": "dfx.json",
+    "skip_dfx_json": false,
+    "canisters": {
+      "hello_backend": {
+        "name": "hello_backend",
+        "var_name": "hello_backend",
+        "service_name": "HelloBackendCanister",
+        "candid_path": ".dfx/local/canisters/hello_backend/constructor.did",
+        "generate_bindings": true,
+        "wasm": ".dfx/local/canisters/hello_backend/hello_backend.wasm",
+        "specified_id": null
+      }
+    }
+  }
+}

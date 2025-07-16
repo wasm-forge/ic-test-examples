@@ -1,0 +1,41 @@
+{
+  "test_folder": "tests",
+  "icp_setup": {
+    "dfx_json": "dfx.json",
+    "skip_dfx_json": false,
+    "canisters": {
+      "eth-balance-backend": {
+        "name": "eth-balance-backend",
+        "var_name": "eth_balance_backend",
+        "service_name": "EthBalanceBackendCanister",
+        "candid_path": "src/eth-balance-backend/eth-balance-backend.did",
+        "generate_bindings": true,
+        "wasm": ".dfx/local/canisters/eth-balance-backend/eth-balance-backend.wasm",
+        "specified_id": null
+      },
+      "evm_rpc": {
+        "name": "evm_rpc",
+        "var_name": "evm_rpc",
+        "service_name": "EvmRpcCanister",
+        "candid_path": ".dfx/local/canisters/evm_rpc/constructor.did",
+        "init_arg": "(record {})",
+        "generate_bindings": true,
+        "wasm": ".dfx/local/canisters/evm_rpc/evm_rpc.wasm.gz",
+        "specified_id": "7hfb6-caaaa-aaaar-qadga-cai"
+      }
+    }
+  },
+  "evm_setup": {
+    "foundry_toml_path": "./evm",
+    "skip_foundry_toml": false,
+    "foundry_src": "src",
+    "foundry_out": "out",
+    "contracts": {
+      "Counter": {
+        "name": "Counter",
+        "var_name": "counter",
+        "sol_json": "./evm/out/Counter.sol/Counter.json"
+      }
+    }
+  }
+}
