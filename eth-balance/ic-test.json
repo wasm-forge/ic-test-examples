@@ -10,7 +10,7 @@
         "service_name": "EthBalanceBackendCanister",
         "candid_path": "src/eth-balance-backend/eth-balance-backend.did",
         "generate_bindings": true,
-        "wasm": ".dfx/local/canisters/eth-balance-backend/eth-balance-backend.wasm",
+        "wasm": "target/wasm32-unknown-unknown/release/eth_balance_backend.wasm",
         "specified_id": null
       },
       "evm_rpc": {

@@ -15,7 +15,7 @@ pub(crate) struct Env {
     pub icp_test: IcpTest,
     pub eth_balance_backend: EthBalanceBackendCanister,
     pub evm_rpc: EvmRpcCanister,
-    pub counter: CounterInstance<EvmUser, alloy_network::Ethereum>,
+    pub counter: CounterInstance<EvmUser, alloy::network::Ethereum>,
     pub evm_user: EvmUser,
 }
 

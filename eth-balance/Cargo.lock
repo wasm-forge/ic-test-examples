@@ -2929,6 +2929,8 @@ dependencies = [
 [[package]]
 name = "ic-test"
 version = "0.1.14"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "07c93bdb08fb9fe73f689ee97f3d176cd8eaf145acb6bf03196bdb98fa9ca156"
 dependencies = [
  "alloy",
  "alloy-node-bindings",
@@ -5464,7 +5466,6 @@ name = "tests"
 version = "0.1.0"
 dependencies = [
  "alloy",
- "alloy-network",
  "candid",
  "cargo_metadata 0.19.2",
  "convert_case 0.8.0",

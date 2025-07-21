@@ -1,3 +1,6 @@
+//! This is a sample test file, it shows an example of how to create actual tests.
+//! The file is only generated once and won't be overwritten.
+
 use ic_test::IcpTest;
 
 use crate::bindings::{
@@ -14,15 +17,7 @@ use crate::test_setup;
 async fn test_() {
     let env = test_setup::setup(IcpTest::new().await).await;
 
-    let address = env.evm_user.address;
-
-    let result = env
-        .eth_balance_backend
-        .get_eth_balance(address.to_string())
-        .call()
-        .await;
-
-    println!("result = {result}");
+    // let result = env./*canister name*/./*canister method name*/(/*parameters*/).call().await;
 
     // ...
 }
