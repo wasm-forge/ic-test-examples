@@ -35,6 +35,11 @@
         "name": "Counter",
         "var_name": "counter",
         "sol_json": "./evm/out/Counter.sol/Counter.json"
+      },
+      "Sender": {
+        "name": "Sender",
+        "var_name": "sender",
+        "sol_json": "./evm/out/Sender.sol/Sender.json"
       }
     }
   }

@@ -8,6 +8,7 @@ use ic_test::{EvmUser, IcpTest};
 use crate::bindings::{
     eth_balance_backend::{self, EthBalanceBackendCanister},
     evm::Counter::{self, CounterInstance},
+    evm::Sender::{self, SenderInstance},
     evm_rpc::{self, EvmRpcCanister},
 };
 
@@ -16,6 +17,7 @@ pub(crate) struct Env {
     pub eth_balance_backend: EthBalanceBackendCanister,
     pub evm_rpc: EvmRpcCanister,
     pub counter: CounterInstance<EvmUser, alloy::network::Ethereum>,
+    pub sender: SenderInstance<EvmUser, alloy::network::Ethereum>,
     pub evm_user: EvmUser,
 }
 
@@ -26,6 +28,7 @@ pub(crate) async fn setup(icp_test: IcpTest) -> Env {
 
     // initialize EVM contracts
     let counter = Counter::deploy(evm_user.clone()).await.unwrap();
+    let sender = Sender::deploy(evm_user.clone()).await.unwrap();
 
     // initialize canisters
 
@@ -50,5 +53,6 @@ pub(crate) async fn setup(icp_test: IcpTest) -> Env {
         eth_balance_backend,
         evm_rpc,
         counter,
+        sender,
     }
 }

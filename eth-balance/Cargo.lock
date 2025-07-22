@@ -2928,9 +2928,7 @@ dependencies = [
 
 [[package]]
 name = "ic-test"
-version = "0.1.14"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "07c93bdb08fb9fe73f689ee97f3d176cd8eaf145acb6bf03196bdb98fa9ca156"
+version = "0.1.15"
 dependencies = [
  "alloy",
  "alloy-node-bindings",

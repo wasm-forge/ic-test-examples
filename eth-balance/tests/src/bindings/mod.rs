@@ -24,4 +24,10 @@ pub mod evm {
         ".././evm/out/Counter.sol/Counter.json",
     );
     
+    sol!(
+        #[sol(rpc)]
+        Sender,
+        ".././evm/out/Sender.sol/Sender.json",
+    );
+    
 }
