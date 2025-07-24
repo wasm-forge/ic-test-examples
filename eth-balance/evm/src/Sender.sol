@@ -11,7 +11,7 @@ contract Sender {
     // Function to receive Ether. Required for the contract to accept ETH.
     receive() external payable {}
 
-    // Send Ether from the contract to a recipient
+    // Send Ether from the contract to a recipient, the function is payable so that we can send the money along the call
     function sendEther(address payable receiver, uint256 eth) external payable {
         require(msg.sender == owner, "Only owner can send Ether");
         require(address(this).balance >= eth, "Insufficient balance");

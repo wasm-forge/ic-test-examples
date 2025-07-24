@@ -15,10 +15,8 @@ use alloy::{
 
 use crate::test_setup;
 
-/*
-/// This is an example test function. It shows how to create a test environment and use it to call canister methods.
-/// Update it to actually do testing.
-#[tokio::test]
+/// This function shows how to test calling the `get_eth_balance`. The canister evm_rpc call is redirected to the local anvil server.
+/*#[tokio::test]
 async fn test_eth_get_balance() {
     let env = test_setup::setup(IcpTest::new().await).await;
 
@@ -47,13 +45,35 @@ async fn test_eth_get_balance() {
 }
 */
 
+/// Here we only test the Ethereum smart contract Counter.
+/// We call its methods to set the counter value, increment it, and finally read it. Set to 42, increment by 1, then assert its current value is 43.
 #[tokio::test]
 async fn test_counter() {
     let env = test_setup::setup(IcpTest::new().await).await;
 
-    let address1 = env.evm_user.address.to_string();
+    let receipt = env
+        .counter
+        .setNumber(U256::from(42))
+        .send()
+        .await
+        .unwrap()
+        .get_receipt()
+        .await
+        .unwrap();
 
-    // call counter contract to get its current value
+    println!("===================  RECEIPT {receipt:?}");
+
+    let receipt = env
+        .counter
+        .increment()
+        .send()
+        .await
+        .unwrap()
+        .get_receipt()
+        .await
+        .unwrap();
+    println!("===================  RECEIPT {receipt:?}");
+
     let receipt = env
         .counter
         .number()
@@ -64,23 +84,15 @@ async fn test_counter() {
         .await
         .unwrap();
 
-    let receipt = env
-        .counter
-        .setNumber(U256::from(123))
-        //        .value(parse_ether("1.0").unwrap())
-        .send()
-        .await
-        .unwrap()
-        .get_receipt()
-        .await
-        .unwrap();
-
-    let receipt = env.counter.number().send().await.unwrap();
-
     println!("===================  RECEIPT {receipt:?}");
 }
 
 /*
+/// The combination of testing the balance canister and the sender smart contract.
+/// 1. Check that the initial balances of the two accounts are 10000 Eth
+/// 2. Call Ethereum contract sendEther belonging to the main user to send 100 Ether to the second account. (The smart contract also accepts a small fee for the operation.)
+/// 3. Finally check, that the second account has the increased amount of Ether (10100 Ether).
+///
 #[tokio::test]
 async fn test_eth_transfer() {
     let env = test_setup::setup(IcpTest::new().await).await;
@@ -108,38 +120,17 @@ async fn test_eth_transfer() {
     // assert the second user has exactly 10000 Eth (the initial test value)
     assert_eq!(result, "10000");
 
-    println!(
-        "=================== CONTARCT ADDRESS = {}",
-        env.sender.address().to_string()
-    );
-
-    // send some money to the sender canister to function
-    let sender_contract_address =
-        Address::from_hex("0x5FbDB2315678afecb367f032d93F642f64180aa3").unwrap();
-
-    println!("=================== AFTER ADDRESS");
-
-    // env.icp_test
-    //     .evm
-    //     .transfer(
-    //         &env.evm_user,
-    //         sender_contract_address,
-    //         parse_ether("200.01").unwrap(),
-    //     )
-    //     .await;
-
-    // println!("=================== AFTER TRANSFER");
-
     // prepare payment to send via the Sender contract
-    //let payment = parse_ether("100.01").unwrap();
+    let payment = parse_ether("100.01").unwrap();
 
     // The amount we want to send
     let amount_to_send = parse_ether("100.0").unwrap();
-    /*
+
     // call Sender.sendEther
     let receipt = env
         .sender
         .sendEther(destination_address, amount_to_send)
+        .value(payment)
         .send()
         .await
         .unwrap()
@@ -157,6 +148,5 @@ async fn test_eth_transfer() {
 
     // assert the second user has now 10100 Eth
     assert_eq!(result, "10100");
-    */
 }
 */
