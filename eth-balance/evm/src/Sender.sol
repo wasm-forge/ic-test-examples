@@ -9,7 +9,7 @@ contract Sender {
     }
 
     // Function to receive Ether. Required for the contract to accept ETH.
-    receive() external payable {}
+    //receive() external payable {}
 
     // Send Ether from the contract to a recipient
     function sendEther(address payable receiver, uint256 eth) external {

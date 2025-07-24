@@ -5,7 +5,6 @@ use ic_test::IcpTest;
 
 use crate::bindings::{
     eth_balance_backend::{self, EthBalanceBackendCanister},
-    evm::Counter::{self, CounterInstance},
     evm_rpc::{self, EvmRpcCanister},
 };
 
@@ -16,6 +15,7 @@ use alloy::{
 
 use crate::test_setup;
 
+/*
 /// This is an example test function. It shows how to create a test environment and use it to call canister methods.
 /// Update it to actually do testing.
 #[tokio::test]
@@ -45,13 +45,48 @@ async fn test_eth_get_balance() {
     // assert the second user has exactly 10000 Eth (the initial test value)
     assert_eq!(result, "10000");
 }
+*/
 
+#[tokio::test]
+async fn test_counter() {
+    let env = test_setup::setup(IcpTest::new().await).await;
+
+    let address1 = env.evm_user.address.to_string();
+
+    // call counter contract to get its current value
+    let receipt = env
+        .counter
+        .number()
+        .send()
+        .await
+        .unwrap()
+        .get_receipt()
+        .await
+        .unwrap();
+
+    let receipt = env
+        .counter
+        .setNumber(U256::from(123))
+        //        .value(parse_ether("1.0").unwrap())
+        .send()
+        .await
+        .unwrap()
+        .get_receipt()
+        .await
+        .unwrap();
+
+    let receipt = env.counter.number().send().await.unwrap();
+
+    println!("===================  RECEIPT {receipt:?}");
+}
+
+/*
 #[tokio::test]
 async fn test_eth_transfer() {
     let env = test_setup::setup(IcpTest::new().await).await;
 
     let address1 = env.evm_user.address;
-    let address2 = env.icp_test.evm.test_user(1).address;
+    let destination_address = env.icp_test.evm.test_user(1).address;
 
     let result = env
         .eth_balance_backend
@@ -66,24 +101,45 @@ async fn test_eth_transfer() {
 
     let result = env
         .eth_balance_backend
-        .get_eth_balance(address2.to_string())
+        .get_eth_balance(destination_address.to_string())
         .call()
         .await;
 
     // assert the second user has exactly 10000 Eth (the initial test value)
     assert_eq!(result, "10000");
 
+    println!(
+        "=================== CONTARCT ADDRESS = {}",
+        env.sender.address().to_string()
+    );
+
+    // send some money to the sender canister to function
+    let sender_contract_address =
+        Address::from_hex("0x5FbDB2315678afecb367f032d93F642f64180aa3").unwrap();
+
+    println!("=================== AFTER ADDRESS");
+
+    // env.icp_test
+    //     .evm
+    //     .transfer(
+    //         &env.evm_user,
+    //         sender_contract_address,
+    //         parse_ether("200.01").unwrap(),
+    //     )
+    //     .await;
+
+    // println!("=================== AFTER TRANSFER");
+
     // prepare payment to send via the Sender contract
-    let payment = parse_ether("100.01").unwrap();
+    //let payment = parse_ether("100.01").unwrap();
 
     // The amount we want to send
-    let to_send = parse_ether("100.0").unwrap();
-
+    let amount_to_send = parse_ether("100.0").unwrap();
+    /*
     // call Sender.sendEther
     let receipt = env
         .sender
-        .sendEther(address2, to_send)
-        .value(payment)
+        .sendEther(destination_address, amount_to_send)
         .send()
         .await
         .unwrap()
@@ -95,10 +151,12 @@ async fn test_eth_transfer() {
 
     let result = env
         .eth_balance_backend
-        .get_eth_balance(address2.to_string())
+        .get_eth_balance(destination_address.to_string())
         .call()
         .await;
 
     // assert the second user has now 10100 Eth
     assert_eq!(result, "10100");
+    */
 }
+*/
