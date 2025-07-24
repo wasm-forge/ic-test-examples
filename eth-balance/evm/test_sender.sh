@@ -29,31 +29,25 @@ forge create src/Counter.sol:Counter --rpc-url $RPC_URL --private-key $PRIVATE_K
 # Deploy Sender contract by the first account
 forge create src/Sender.sol:Sender --rpc-url $RPC_URL --private-key $PRIVATE_KEY1 --broadcast
 
-# IDs are known from the deployer and the deployer's nonce
+# New contract IDs are known from the deployer and the deployer's nonce
 export COUNTER=$(cast compute-address --nonce 0 $ACCOUNT1 | awk '{ print $3 }')
-export SENDER=$(cast compute-address --nonce 1 $ACCOUNT2 | awk '{ print $3 }')
+export SENDER=$(cast compute-address --nonce 1 $ACCOUNT1 | awk '{ print $3 }')
 
-export BALANCE1=$(cast balance $ACCOUNT1 -e)
-export BALANCE2=$(cast balance $ACCOUNT2 -e)
-export BALANCE3=$(cast balance $SENDER -e)
 echo "Balance of accounts before transfer"
-echo "Account1 = $BALANCE1"
-echo "Account2 = $BALANCE2"
-echo "Sender contract balance = $BALANCE3"
+echo "Account1 = $(cast balance $ACCOUNT1 -e)"
+echo "Account2 = $(cast balance $ACCOUNT2 -e)"
+echo "Sender contract balance = $(cast balance $SENDER -e)"
 
 
 # Send some money to the sender contract
 echo "Sending 33 Eth to the sender contract"
-cast send $SENDER --value 33ether --private-key $PRIVATE_KEY1 --rpc-url $RPC_URL
+#cast send $SENDER --value 33ether --private-key $PRIVATE_KEY1 --rpc-url $RPC_URL
 
 # execute "sendEther", the contract transfers 5 Eth to the second user
-cast send $SENDER "sendEther(address,uint256)" $ACCOUNT2 5ether --private-key $PRIVATE_KEY2 --rpc-url $RPC_URL
+cast send $SENDER "sendEther(address,uint256)" $ACCOUNT2 5ether --value 33ether --private-key $PRIVATE_KEY1 --rpc-url $RPC_URL
 
 
-export BALANCE1=$(cast balance $ACCOUNT1 -e)
-export BALANCE2=$(cast balance $ACCOUNT2 -e)
-export BALANCE3=$(cast balance $SENDER -e)
 echo "Balance of accounts after transfer"
-echo "Account1 = $BALANCE1"
-echo "Account2 = $BALANCE2"
-echo "Sender contract balance = $BALANCE3"
+echo "Account1 = $(cast balance $ACCOUNT1 -e)"
+echo "Account2 = $(cast balance $ACCOUNT2 -e)"
+echo "Sender contract balance = $(cast balance $SENDER -e)"

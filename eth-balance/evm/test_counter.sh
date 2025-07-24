@@ -29,9 +29,9 @@ forge create src/Counter.sol:Counter --rpc-url $RPC_URL --private-key $PRIVATE_K
 # Deploy Sender contract by the first account
 forge create src/Sender.sol:Sender --rpc-url $RPC_URL --private-key $PRIVATE_KEY1 --broadcast
 
-# IDs are known from the deployer and the deployer's nonce
+# Contract IDs are known from the deployer and the deployer's nonce
 export COUNTER=$(cast compute-address --nonce 0 $ACCOUNT1 | awk '{ print $3 }')
-export SENDER=$(cast compute-address --nonce 1 $ACCOUNT2 | awk '{ print $3 }')
+export SENDER=$(cast compute-address --nonce 1 $ACCOUNT1 | awk '{ print $3 }')
 
 
 # set counter to 42
