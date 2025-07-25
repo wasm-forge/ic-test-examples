@@ -16,7 +16,7 @@ use alloy::{
 use crate::test_setup;
 
 /// This function shows how to test calling the `get_eth_balance`. The canister evm_rpc call is redirected to the local anvil server.
-/*#[tokio::test]
+#[tokio::test]
 async fn test_eth_get_balance() {
     let env = test_setup::setup(IcpTest::new().await).await;
 
@@ -43,7 +43,6 @@ async fn test_eth_get_balance() {
     // assert the second user has exactly 10000 Eth (the initial test value)
     assert_eq!(result, "10000");
 }
-*/
 
 /// Here we only test the Ethereum smart contract Counter.
 /// We call its methods to set the counter value, increment it, and finally read it. Set to 42, increment by 1, then assert its current value is 43.
@@ -87,7 +86,6 @@ async fn test_counter() {
     println!("===================  RECEIPT {receipt:?}");
 }
 
-/*
 /// The combination of testing the balance canister and the sender smart contract.
 /// 1. Check that the initial balances of the two accounts are 10000 Eth
 /// 2. Call Ethereum contract sendEther belonging to the main user to send 100 Ether to the second account. (The smart contract also accepts a small fee for the operation.)
@@ -149,4 +147,3 @@ async fn test_eth_transfer() {
     // assert the second user has now 10100 Eth
     assert_eq!(result, "10100");
 }
-*/
