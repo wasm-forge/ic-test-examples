@@ -3,15 +3,15 @@ A collection of examples featuring the [ic-test](https://github.com/wasm-forge/i
 
 ## hello-ic-test
 
-A basic test example generated from dfx.
+Testing the basic "hello world" example generated from `dfx`.
 
 ## ic-rusqlite
 
-A slightly more complex example of a canister testing SQL statements.
+A more complex example of a canister testing SQL statements.
 
 ## eth-balance
 
-An example of a canister requesting ETH balance.
+Testing a canister communicating with the EVM RCP to request ETH balance from an arbitrary address.
 
 # External examples
 

@@ -19,3 +19,13 @@ To get ETH balance from the `vitalik.eth` address `0xd8dA6BF26964aF9D7eEd9e03E53
 dfx canister call eth-balance-backend get_eth_balance '("0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045")'
 ```
 
+
+## Testing
+
+The project showcases how one can test the canister using the ic-test.
+
+To launch testing, simply call:
+```bash
+cargo test
+```
+
