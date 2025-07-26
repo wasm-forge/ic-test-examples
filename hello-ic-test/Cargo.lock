@@ -1572,9 +1572,9 @@ dependencies = [
 
 [[package]]
 name = "ic-test"
-version = "0.1.11"
+version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b8462108f63a4021b13838ae40c9932d7c5fe57704d86f3de0168fd8c4816537"
+checksum = "90278c3bfe3b9d0d8e6548893769edb8ecfb8007c7efe72fcfbded346b32fef2"
 dependencies = [
  "anyhow",
  "askama",

@@ -2,7 +2,7 @@ use std::cell::RefCell;
 
 #[ic_cdk::query]
 fn greet(name: String) -> String {
-    format!("Hello, {}!", name)
+    format!("Hello, {name}!")
 }
 
 #[derive(Clone, Default)]
