@@ -7,7 +7,7 @@ edition = "2021"
 alloy = { version = "1.0.22", features = ["full"] }
 candid = "0.10"
 cargo_metadata = "0.19.1"
-ic-test = {path = "../../../ic-test", features = ["evm"]}
+ic-test = {path = "0.3", features = ["evm"]}
 pocket-ic = "9.0.2"
 serde = "1.0.219"
 serde_bytes = "0.11.17"

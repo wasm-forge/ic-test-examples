@@ -20,6 +20,7 @@ dfx canister call eth-balance-backend get_eth_balance '("0xd8dA6BF26964aF9D7eEd9
 ```
 
 
+
 ## Testing
 
 The project showcases how one can test the canister using the ic-test.

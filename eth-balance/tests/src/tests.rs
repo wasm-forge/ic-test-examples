@@ -50,7 +50,8 @@ async fn test_eth_get_balance() {
 async fn test_counter() {
     let env = test_setup::setup(IcpTest::new().await).await;
 
-    let receipt = env
+    // initialize counter to 42
+    let _receipt = env
         .counter
         .setNumber(U256::from(42))
         .send()
@@ -60,9 +61,8 @@ async fn test_counter() {
         .await
         .unwrap();
 
-    println!("===================  RECEIPT {receipt:?}");
-
-    let receipt = env
+    // call the increment function, the counter value should be equal to 42
+    let _receipt = env
         .counter
         .increment()
         .send()
@@ -71,19 +71,11 @@ async fn test_counter() {
         .get_receipt()
         .await
         .unwrap();
-    println!("===================  RECEIPT {receipt:?}");
 
-    let receipt = env
-        .counter
-        .number()
-        .send()
-        .await
-        .unwrap()
-        .get_receipt()
-        .await
-        .unwrap();
+    // read the current counter value
+    let counter = env.counter.number().call().await.unwrap();
 
-    println!("===================  RECEIPT {receipt:?}");
+    assert_eq!(counter, U256::from(43));
 }
 
 /// The combination of testing the balance canister and the sender smart contract.
