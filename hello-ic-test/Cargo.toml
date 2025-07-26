@@ -1,5 +1,4 @@
 [workspace]
-members = [
-    "src/hello-ic-test-backend"
+members = ["src/hello-ic-test-backend"
 , "tests"]
 resolver = "2"

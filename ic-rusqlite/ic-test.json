@@ -8,9 +8,9 @@
         "name": "ic-rusqlite-backend",
         "var_name": "ic_rusqlite_backend",
         "service_name": "IcRusqliteBackendCanister",
-        "candid_path": ".dfx/local/canisters/ic-rusqlite-backend/constructor.did",
+        "candid_path": "src/ic-rusqlite-backend/ic-rusqlite-backend.did",
         "generate_bindings": true,
-        "wasm": ".dfx/local/canisters/ic-rusqlite-backend/ic-rusqlite-backend.wasm.gz",
+        "wasm": "target/wasm32-wasip1/release/no_wasi.wasm.gz",
         "specified_id": null
       }
     }
